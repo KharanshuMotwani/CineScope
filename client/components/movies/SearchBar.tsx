@@ -21,7 +21,10 @@ export default function SearchBar({ large = false }: { large?: boolean }) {
   };
 
   return (
-    <form onSubmit={onSubmit} className={`flex w-full items-center gap-2 ${large ? "h-14" : "h-10"}`}>
+    <form
+      onSubmit={onSubmit}
+      className={`flex w-full items-center gap-2 ${large ? "h-14" : "h-10"}`}
+    >
       <input
         value={term}
         onChange={(e) => setTerm(e.target.value)}
@@ -29,7 +32,12 @@ export default function SearchBar({ large = false }: { large?: boolean }) {
         className={`flex-1 rounded-md bg-muted/40 border border-border/60 px-4 text-sm outline-none focus:ring-2 focus:ring-primary/40 ${large ? "h-14 text-base" : "h-10"}`}
         aria-label="Search movies"
       />
-      <Button type="submit" className={large ? "h-14 px-6 text-base" : "h-10 px-4"}>Search</Button>
+      <Button
+        type="submit"
+        className={large ? "h-14 px-6 text-base" : "h-10 px-4"}
+      >
+        Search
+      </Button>
     </form>
   );
 }

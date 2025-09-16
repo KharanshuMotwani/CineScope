@@ -20,14 +20,20 @@ export default function MovieCard({ movie }: { movie: Movie }) {
               loading="lazy"
             />
           ) : (
-            <div className="h-full w-full grid place-items-center text-muted-foreground">No image</div>
+            <div className="h-full w-full grid place-items-center text-muted-foreground">
+              No image
+            </div>
           )}
         </div>
         <div className="p-3">
           <div className="flex items-center justify-between gap-2">
-            <h3 className="font-semibold line-clamp-1" title={movie.title}>{movie.title}</h3>
+            <h3 className="font-semibold line-clamp-1" title={movie.title}>
+              {movie.title}
+            </h3>
             {movie.year ? (
-              <span className="text-xs px-2 py-0.5 rounded bg-accent/20 text-accent-foreground/90 border border-accent/30">{movie.year}</span>
+              <span className="text-xs px-2 py-0.5 rounded bg-accent/20 text-accent-foreground/90 border border-accent/30">
+                {movie.year}
+              </span>
             ) : null}
           </div>
           <div className="mt-1 text-xs text-muted-foreground flex items-center gap-2">

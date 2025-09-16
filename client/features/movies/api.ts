@@ -54,7 +54,9 @@ export async function getMovieById(id: string | number): Promise<Movie | null> {
     artwork: upscaleArtwork(item.artworkUrl100),
     genre: item.primaryGenreName,
     releaseDate: item.releaseDate,
-    year: item.releaseDate ? new Date(item.releaseDate).getFullYear() : undefined,
+    year: item.releaseDate
+      ? new Date(item.releaseDate).getFullYear()
+      : undefined,
     description: item.longDescription || item.shortDescription,
     previewUrl: item.previewUrl,
     durationMs: item.trackTimeMillis,

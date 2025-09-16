@@ -27,7 +27,10 @@ export default function Header() {
           <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-accent shadow-lg" />
           <span className="text-lg font-bold tracking-tight">CineScope</span>
         </Link>
-        <form onSubmit={onSubmit} className="hidden md:flex items-center gap-2 w-[420px] max-w-full">
+        <form
+          onSubmit={onSubmit}
+          className="hidden md:flex items-center gap-2 w-[420px] max-w-full"
+        >
           <input
             value={term}
             onChange={(e) => setTerm(e.target.value)}
@@ -35,7 +38,9 @@ export default function Header() {
             className="flex-1 h-10 rounded-md bg-muted/40 border border-border/60 px-3 text-sm outline-none focus:ring-2 focus:ring-primary/40"
             aria-label="Search movies"
           />
-          <Button type="submit" className="h-10 px-4">Search</Button>
+          <Button type="submit" className="h-10 px-4">
+            Search
+          </Button>
         </form>
       </div>
     </header>

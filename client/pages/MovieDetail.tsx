@@ -5,27 +5,36 @@ import { Button } from "@/components/ui/button";
 
 export default function MovieDetail() {
   const { id } = useParams<{ id: string }>();
-  const { data: movie, isLoading, isError } = useQuery({
+  const {
+    data: movie,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["movie", id],
     queryFn: () => getMovieById(id!),
     enabled: !!id,
   });
 
   if (isLoading) return <div className="py-24 text-center">Loading…</div>;
-  if (isError || !movie) return (
-    <div className="py-24 text-center">
-      <p className="mb-6">We couldn't load this movie.</p>
-      <Button asChild>
-        <Link to="/">Back to search</Link>
-      </Button>
-    </div>
-  );
+  if (isError || !movie)
+    return (
+      <div className="py-24 text-center">
+        <p className="mb-6">We couldn't load this movie.</p>
+        <Button asChild>
+          <Link to="/">Back to search</Link>
+        </Button>
+      </div>
+    );
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-8">
       <div className="rounded-xl overflow-hidden bg-card/60 border border-border/60">
         {movie.artwork ? (
-          <img src={movie.artwork} alt={movie.title} className="w-full h-auto" />
+          <img
+            src={movie.artwork}
+            alt={movie.title}
+            className="w-full h-auto"
+          />
         ) : null}
       </div>
       <div>
@@ -33,7 +42,9 @@ export default function MovieDetail() {
           <div>
             <h1 className="text-3xl font-bold tracking-tight">{movie.title}</h1>
             <p className="mt-2 text-muted-foreground">
-              {[movie.year, movie.genre, movie.contentRating].filter(Boolean).join(" • ")}
+              {[movie.year, movie.genre, movie.contentRating]
+                .filter(Boolean)
+                .join(" • ")}
             </p>
           </div>
           <Button asChild variant="secondary">

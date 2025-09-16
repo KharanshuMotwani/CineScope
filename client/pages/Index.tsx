@@ -20,7 +20,8 @@ export default function Index() {
 
   const results = useMemo(() => {
     const list = (data ?? []).slice();
-    if (sort === "year_desc") list.sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
+    if (sort === "year_desc")
+      list.sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
     if (sort === "year_asc") list.sort((a, b) => (a.year ?? 0) - (b.year ?? 0));
     return list;
   }, [data, sort]);
@@ -36,7 +37,8 @@ export default function Index() {
               Discover your next favorite movie
             </h1>
             <p className="mt-4 text-muted-foreground text-base lg:text-lg">
-              Search across popular titles, genres, studios, and more. Stream trailers, explore details, and build your watchlist.
+              Search across popular titles, genres, studios, and more. Stream
+              trailers, explore details, and build your watchlist.
             </p>
           </div>
           <div className="mt-8 max-w-3xl">
@@ -62,9 +64,13 @@ export default function Index() {
 
       <section>
         <div className="flex items-center justify-between gap-4 mb-4">
-          <h2 className="text-lg font-semibold">{term ? `Results for “${term}”` : "Popular searches"}</h2>
+          <h2 className="text-lg font-semibold">
+            {term ? `Results for “${term}”` : "Popular searches"}
+          </h2>
           <div className="flex items-center gap-2 text-sm">
-            <label htmlFor="sort" className="text-muted-foreground">Sort</label>
+            <label htmlFor="sort" className="text-muted-foreground">
+              Sort
+            </label>
             <select
               id="sort"
               value={sort}
@@ -81,22 +87,27 @@ export default function Index() {
         {isFetching && (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
             {Array.from({ length: 12 }).map((_, i) => (
-              <div key={i} className="rounded-xl aspect-[2/3] animate-pulse bg-muted/40" />
+              <div
+                key={i}
+                className="rounded-xl aspect-[2/3] animate-pulse bg-muted/40"
+              />
             ))}
           </div>
         )}
 
         {!isFetching && results.length === 0 && (
           <div className="text-center py-20 text-muted-foreground">
-            <p>No results yet. Try a quick filter above or search for a title.</p>
+            <p>
+              No results yet. Try a quick filter above or search for a title.
+            </p>
           </div>
         )}
 
         {!isFetching && results.length > 0 && (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
             {results.map((m) => (
-              <MovieCard key={m.id} movie={m} />)
-            )}
+              <MovieCard key={m.id} movie={m} />
+            ))}
           </div>
         )}
       </section>
